@@ -12,13 +12,12 @@ func TestDecodeToMinSumNumber(t *testing.T) {
 		{"==RLL", "000210"},
 		{"=LLRR", "221012"},
 		{"RRL=R", "012001"},
+		{"L", "10"}, // Case: simple L
+		{"R", "01"}, // Case: simple R
+		{"=", "00"}, // Case: simple =
 		// {"L=R", "101"},
 		// {"RRLL=", "012210"},
 	}
-	// 	input = LLRR= output = 210122
-	// input = ==RLL output = 000210
-	// input = =LLRR output = 221012
-	// input = RRL=R output = 012001
 
 	for _, test := range tests {
 		t.Run(test.encoded, func(t *testing.T) {
