@@ -27,5 +27,9 @@ clean:
 # Default command: run tests
 default: test
 
+# Install dependencies
+install:
+	go mod tidy
+
 dev:
 	go run main.go
