@@ -29,14 +29,11 @@ func decodeToMinSumNumber(encoded string) string {
 
 			result[i+1] = result[i]
 
-			fmt.Println("result_i", i)
 		}
 	}
-	fmt.Println("result_1", result)
 
 	// Backward pass to handle 'L' constraints (left digit > right digit)
 	for i := len(encoded) - 1; i >= 0; i-- {
-		fmt.Println("encoded[i]: ", encoded[i])
 
 		if encoded[i] == 'L' && result[i] <= result[i+1] {
 			result[i] = result[i+1] + 1
@@ -66,7 +63,7 @@ func decodeToMinSumNumber(encoded string) string {
 }
 
 func SolB() {
-
+	fmt.Println("s----solB----")
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter encoded string: ")
 	encoded, _ := reader.ReadString('\n')
@@ -74,5 +71,6 @@ func SolB() {
 
 	decoded := decodeToMinSumNumber(encoded)
 	fmt.Println("Decoded number sequence:", decoded)
+	fmt.Println("e----solB----")
 
 }
