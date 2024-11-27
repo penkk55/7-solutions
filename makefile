@@ -16,7 +16,7 @@ coverage-show: coverage
 	go tool cover -func=$(COVERAGE_FILE)
 
 # Generate HTML report for coverage
-coverage-html: coverage
+css: coverage
 	go tool cover -html=$(COVERAGE_FILE) -o $(COVERAGE_HTML)
 	@echo "HTML coverage report generated: $(COVERAGE_HTML)"
 

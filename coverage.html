@@ -55,7 +55,9 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">7-solutions/main.go (41.4%)</option>
+				<option value="file0">7-solutions/main.go (0.0%)</option>
+				
+				<option value="file1">7-solutions/sola/sola.go (40.0%)</option>
 				
 				</select>
 			</div>
@@ -70,6 +72,124 @@
 		<div id="content">
 		
 		<pre class="file" id="file0" style="display: none">package main
+
+import (
+        "7-solutions/sola"
+        "fmt"
+        "sync"
+)
+
+// Declare a waitgroup
+var wg sync.WaitGroup
+
+// // Function to calculate the maximum path sum
+// func maxPathSum(triangle [][]int) int {
+//         n := len(triangle)
+//         if n == 0 {
+//                 return 0
+//         }
+
+//         // Bottom-up DP approach
+//         dp := make([]int, len(triangle[n-1]))
+//         copy(dp, triangle[n-1])
+
+//         for i := n - 2; i &gt;= 0; i-- {
+//                 for j := 0; j &lt; len(triangle[i]); j++ {
+//                         dp[j] = triangle[i][j] + max(dp[j], dp[j+1])
+//                 }
+//         }
+
+//         return dp[0]
+// }
+
+// // Utility function to get the maximum of two integers
+// func max(a, b int) int {
+//         if a &gt; b {
+//                 return a
+//         }
+//         return b
+// }
+
+// // Function to fetch and parse JSON input from URL
+// func fetchAndParseJSON() ([][]int, error) {
+//         jsonFile, err := os.Open("hard.json")
+//         if err != nil {
+//                 panic(err)
+//         }
+
+//         defer jsonFile.Close()
+//         byteValue, err := io.ReadAll(jsonFile)
+//         if err != nil {
+//                 panic(err)
+//         }
+
+//         // [59], [73, 41], [52, 40, 53], [26, 53, 6, 34]
+//         // var result int
+//         var array [][]int
+//         json.Unmarshal([]byte(byteValue), &amp;array)
+//         return array, nil
+// }
+
+func main() <span class="cov0" title="0">{
+
+        // parallel
+
+        // // Add(3) because of 3 functions of concurrent
+        // wg.Add(3)
+
+        // // Concurrent function list
+        // go solA()
+        // go solB()
+        // go solC()
+        // // Waiting to finish
+        // wg.Wait()
+
+        // async
+        // sola.solA()
+        sola.SolA()
+        // solB()
+        // solC()
+}</span>
+
+// func solA() {
+//         // defer wg.Done()
+//         fmt.Println("s----solA----")
+//         // Test case 1: Static input
+//         staticTriangle := [][]int{
+//                 {59},
+//                 {73, 41},
+//                 {52, 40, 53},
+//                 {26, 53, 6, 34},
+//         }
+//         fmt.Println("Test case 1 result:", maxPathSum(staticTriangle)) // Expected: 237
+
+//         // Test case 2: Fetch input from URL
+//         triangle, err := fetchAndParseJSON()
+//         if err != nil {
+//                 log.Fatalf("Error fetching or parsing JSON: %v", err)
+//         }
+//         fmt.Println("Test case 2 result:", maxPathSum(triangle)) // Expected: 7273
+//         fmt.Println("e----solA----")
+// }
+
+func solB() <span class="cov0" title="0">{
+        // defer wg.Done()
+        var i int
+        fmt.Println("s----solB----")
+        fmt.Scan(&amp;i)
+        fmt.Println("Your number is:", i)
+        fmt.Println("e----solB----")
+}</span>
+
+func solC() <span class="cov0" title="0">{
+        // defer wg.Done()
+
+        fmt.Println("s----solC----")
+        fmt.Println("e----solC----")
+}</span>
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package sola
 
 import (
         "encoding/json"
@@ -108,7 +228,7 @@ func max(a, b int) int <span class="cov8" title="1">{
 }
 
 // Function to fetch and parse JSON input from URL
-func fetchAndParseJSON(url string) ([][]int, error) <span class="cov0" title="0">{
+func fetchAndParseJSON() ([][]int, error) <span class="cov0" title="0">{
         jsonFile, err := os.Open("hard.json")
         if err != nil </span><span class="cov0" title="0">{
                 panic(err)</span>
@@ -127,7 +247,9 @@ func fetchAndParseJSON(url string) ([][]int, error) <span class="cov0" title="0"
         return array, nil</span>
 }
 
-func main() <span class="cov0" title="0">{
+func SolA() <span class="cov0" title="0">{
+        // defer wg.Done()
+        fmt.Println("s----solA----")
         // Test case 1: Static input
         staticTriangle := [][]int{
                 {59},
@@ -138,12 +260,12 @@ func main() <span class="cov0" title="0">{
         fmt.Println("Test case 1 result:", maxPathSum(staticTriangle)) // Expected: 237
 
         // Test case 2: Fetch input from URL
-        url := "https://raw.githubusercontent.com/7-solutions/backend-challenge/main/files/hard.json"
-        triangle, err := fetchAndParseJSON(url)
+        triangle, err := fetchAndParseJSON()
         if err != nil </span><span class="cov0" title="0">{
                 log.Fatalf("Error fetching or parsing JSON: %v", err)
         }</span>
-        <span class="cov0" title="0">fmt.Println("Test case 2 result:", maxPathSum(triangle))</span> // Expected: 7273
+        <span class="cov0" title="0">fmt.Println("Test case 2 result:", maxPathSum(triangle)) // Expected: 7273
+        fmt.Println("e----solA----")</span>
 }
 </pre>
 		

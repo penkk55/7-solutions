@@ -1,76 +1,118 @@
 package main
 
 import (
-	"encoding/json"
+	// "7-solutions/sola"
+	"7-solutions/solb"
 	"fmt"
-	"io"
-	"log"
-	"os"
+	"sync"
 )
 
-// Function to calculate the maximum path sum
-func maxPathSum(triangle [][]int) int {
-	n := len(triangle)
-	if n == 0 {
-		return 0
-	}
+// Declare a waitgroup
+var wg sync.WaitGroup
 
-	// Bottom-up DP approach
-	dp := make([]int, len(triangle[n-1]))
-	copy(dp, triangle[n-1])
+// // Function to calculate the maximum path sum
+// func maxPathSum(triangle [][]int) int {
+// 	n := len(triangle)
+// 	if n == 0 {
+// 		return 0
+// 	}
 
-	for i := n - 2; i >= 0; i-- {
-		for j := 0; j < len(triangle[i]); j++ {
-			dp[j] = triangle[i][j] + max(dp[j], dp[j+1])
-		}
-	}
+// 	// Bottom-up DP approach
+// 	dp := make([]int, len(triangle[n-1]))
+// 	copy(dp, triangle[n-1])
 
-	return dp[0]
-}
+// 	for i := n - 2; i >= 0; i-- {
+// 		for j := 0; j < len(triangle[i]); j++ {
+// 			dp[j] = triangle[i][j] + max(dp[j], dp[j+1])
+// 		}
+// 	}
 
-// Utility function to get the maximum of two integers
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
+// 	return dp[0]
+// }
 
-// Function to fetch and parse JSON input from URL
-func fetchAndParseJSON(url string) ([][]int, error) {
-	jsonFile, err := os.Open("hard.json")
-	if err != nil {
-		panic(err)
-	}
+// // Utility function to get the maximum of two integers
+// func max(a, b int) int {
+// 	if a > b {
+// 		return a
+// 	}
+// 	return b
+// }
 
-	defer jsonFile.Close()
-	byteValue, err := io.ReadAll(jsonFile)
-	if err != nil {
-		panic(err)
-	}
+// // Function to fetch and parse JSON input from URL
+// func fetchAndParseJSON() ([][]int, error) {
+// 	jsonFile, err := os.Open("hard.json")
+// 	if err != nil {
+// 		panic(err)
+// 	}
 
-	// [59], [73, 41], [52, 40, 53], [26, 53, 6, 34]
-	// var result int
-	var array [][]int
-	json.Unmarshal([]byte(byteValue), &array)
-	return array, nil
-}
+// 	defer jsonFile.Close()
+// 	byteValue, err := io.ReadAll(jsonFile)
+// 	if err != nil {
+// 		panic(err)
+// 	}
+
+// 	// [59], [73, 41], [52, 40, 53], [26, 53, 6, 34]
+// 	// var result int
+// 	var array [][]int
+// 	json.Unmarshal([]byte(byteValue), &array)
+// 	return array, nil
+// }
 
 func main() {
-	// Test case 1: Static input
-	staticTriangle := [][]int{
-		{59},
-		{73, 41},
-		{52, 40, 53},
-		{26, 53, 6, 34},
-	}
-	fmt.Println("Test case 1 result:", maxPathSum(staticTriangle)) // Expected: 237
 
-	// Test case 2: Fetch input from URL
-	url := "https://raw.githubusercontent.com/7-solutions/backend-challenge/main/files/hard.json"
-	triangle, err := fetchAndParseJSON(url)
-	if err != nil {
-		log.Fatalf("Error fetching or parsing JSON: %v", err)
-	}
-	fmt.Println("Test case 2 result:", maxPathSum(triangle)) // Expected: 7273
+	// parallel
+
+	// // Add(3) because of 3 functions of concurrent
+	// wg.Add(3)
+
+	// // Concurrent function list
+	// go solA()
+	// go solB()
+	// go solC()
+	// // Waiting to finish
+	// wg.Wait()
+
+	// async
+	// sola.solA()
+	// sola.SolA()
+	solb.SolB()
+	// solB()
+	// solC()
+}
+
+// func solA() {
+// 	// defer wg.Done()
+// 	fmt.Println("s----solA----")
+// 	// Test case 1: Static input
+// 	staticTriangle := [][]int{
+// 		{59},
+// 		{73, 41},
+// 		{52, 40, 53},
+// 		{26, 53, 6, 34},
+// 	}
+// 	fmt.Println("Test case 1 result:", maxPathSum(staticTriangle)) // Expected: 237
+
+// 	// Test case 2: Fetch input from URL
+// 	triangle, err := fetchAndParseJSON()
+// 	if err != nil {
+// 		log.Fatalf("Error fetching or parsing JSON: %v", err)
+// 	}
+// 	fmt.Println("Test case 2 result:", maxPathSum(triangle)) // Expected: 7273
+// 	fmt.Println("e----solA----")
+// }
+
+func solB() {
+	// defer wg.Done()
+	var i int
+	fmt.Println("s----solB----")
+	fmt.Scan(&i)
+	fmt.Println("Your number is:", i)
+	fmt.Println("e----solB----")
+}
+
+func solC() {
+	// defer wg.Done()
+
+	fmt.Println("s----solC----")
+	fmt.Println("e----solC----")
 }
